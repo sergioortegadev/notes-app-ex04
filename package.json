@@ -1,0 +1,11 @@
+{
+  "name": "notes-fullstack-app-ex-04",
+  "version": "1.0.0",
+  "description": "Notes app with nest.js framework",
+  "main": "./backend/src/main.tx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergio Ortega",
+  "license": "MIT"
+}
