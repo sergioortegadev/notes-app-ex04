@@ -1,15 +1,35 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import Form from "./components/Form/Form";
+import List from "./components/List/List";
 
 function App() {
-  const [text, setText] = useState("");
+  const [notes, setNotes] = useState([]);
+  const endpoint = "http://localhost:5000/v1/notes";
 
-  const getNotes = () => {
-    return (async () => {
-      const data = await fetch("http://localhost:5000/v1/notes").then((res) => res.json());
-      setText(data.message);
-      return await data.message;
-    })();
+  const getNotes = async () => {
+    const data = await fetch(endpoint).then((res) => res.json());
+    setNotes(data.data);
+  };
+
+  const searchNote = async (text) => {
+    const titSearch = await fetch(`${endpoint}?title=${text}`).then((res) => res.json());
+
+    const descriptionSearch = await fetch(`${endpoint}?description=${text}`).then((res) => res.json());
+
+    const combinedSearch = () => {
+      if (titSearch.data && descriptionSearch.data) {
+        const combS = [...titSearch.data, ...descriptionSearch.data];
+        const uniqueObj = {};
+        combS.forEach((item) => {
+          uniqueObj[item.id] = item;
+        });
+        return Object.values(uniqueObj);
+      } else if (titSearch.data) {
+        return titSearch.data;
+      } else return descriptionSearch.data;
+    };
+    const data = combinedSearch();
+    setNotes(data);
   };
 
   useEffect(() => {
@@ -18,8 +38,9 @@ function App() {
 
   return (
     <>
-      <h1>Notes</h1>
-      <div className="text">{text}</div>
+      <h1 onClick={getNotes}>Notes</h1>
+      <Form search={searchNote} />
+      <List notes={notes} getNotes={getNotes} />
     </>
   );
 }

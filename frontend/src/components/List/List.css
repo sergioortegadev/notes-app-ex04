@@ -1,0 +1,144 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  height: 25rem;
+  border: 3px solid transparent;
+  border-radius: 1rem;
+  background-color: #333;
+  padding: 1.25rem 0.25rem 0.5rem 0.75rem;
+  margin: 1rem;
+}
+.card:hover,
+.card:active {
+  border-color: #777;
+}
+.card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+.card-data {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  height: 22rem;
+  position: relative;
+  top: -5rem;
+}
+.card-data h3 {
+  text-align: start;
+  font-weight: bold;
+  width: 14rem;
+  height: 4rem;
+  overflow: hidden;
+}
+.card-data p {
+  height: 18rem;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  margin: 0;
+}
+.card-note-isCompleted,
+.card-note-category {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #666;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #493;
+  backdrop-filter: blur(1px);
+  z-index: 2;
+}
+.card-note-isCompleted {
+  top: -2.8rem;
+  right: -8.5rem;
+}
+.card-note-category {
+  top: -0.8rem;
+  right: -5.8rem;
+}
+.card-note-isCompleted:hover,
+.card-note-category:hover {
+  border-color: var(--btn-border-color-hover);
+}
+.card-note-isCompleted:active,
+.card-note-category:active {
+  background-color: var(--btn-bg-color-active);
+}
+.card-delete-btn {
+  position: relative;
+  bottom: 3.5rem;
+  border: 2px solid var(--main-color);
+  border-radius: 0.75rem;
+  background-color: var(--btn-bg-color);
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem;
+}
+.card-delete-btn:hover {
+  border-color: var(--main-color-hover);
+}
+.card-delete-btn:active {
+  background-color: var(--btn-bg-color-active);
+}
+
+.no-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+.no-notes button,
+.no-notes img {
+  margin-top: 2rem;
+}
+.no-notes img {
+  width: 300px;
+}
+/*  - - Category colors - -  */
+.red {
+  background-color: var(--card-bg-color-red);
+}
+.green {
+  background-color: var(--card-bg-color-green);
+}
+.blue {
+  background-color: var(--card-bg-color-blue);
+}
+.yellow {
+  background-color: var(--card-bg-color-yellow);
+}
+.orange {
+  background-color: var(--card-bg-color-orange);
+}
+.magenta {
+  background-color: var(--card-bg-color-magenta);
+}
+.white {
+  color: var(--card-color-white);
+  background-color: var(--card-bg-color-white);
+}
+.black {
+  color: var(--card-color-black);
+  background-color: var(--card-bg-color-black);
+}
+
+@media (prefers-color-scheme: light) {
+  .card {
+    background-color: #cccccc90;
+  }
+  .card-note-isCompleted:active,
+  .card-note-category:active,
+  .card-delete-btn:active {
+    background-color: var(--btn-bg-color-active-light);
+  }
+}

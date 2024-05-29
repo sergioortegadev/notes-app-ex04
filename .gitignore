@@ -1,7 +1,10 @@
+# Database
+database.sqlite
+
 # compiled output
-*/dist
+/backend/dist
 */node_modules
-*/build
+#*/build
 
 # Logs
 logs

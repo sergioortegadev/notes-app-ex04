@@ -90,4 +90,56 @@ export class NotesService {
       data: await this.notesRepository.save(note),
     };
   }
+
+  async putNotes(
+    id: number,
+    isCompleted?: boolean,
+    title?: string,
+    description?: string,
+    category?: string,
+  ) {
+    const note = await this.notesRepository.findOne({ where: { id: id } });
+
+    if (note) {
+      if (isCompleted !== undefined) {
+        note.isCompleted = isCompleted;
+      }
+      if (title !== undefined) {
+        note.title = title;
+      }
+      if (description !== undefined) {
+        note.description = description;
+      }
+      if (category !== undefined) {
+        note.category = category;
+      }
+      return {
+        message: `Note with id: ${note.id} and title: '${note.title}' updated ok into DB`,
+        data: await this.notesRepository.save(note),
+      };
+    } else {
+      return {
+        message: `Error - id: ${id} not found in DB`,
+      };
+    }
+  }
+
+  async deleteNotes(id: number) {
+    const note = await this.notesRepository.findOne({ where: { id: id } });
+
+    if (note) {
+      await this.notesRepository.delete(id);
+
+      return {
+        message: `Note with id: ${note.id} and title: '${note.title}' deleted ok into DB`,
+        data: (await this.notesRepository.find()).filter(
+          (note) => note.id !== id,
+        ),
+      };
+    } else {
+      return {
+        message: `Error - id: ${id} not found in DB`,
+      };
+    }
+  }
 }

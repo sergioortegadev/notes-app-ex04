@@ -1,0 +1,45 @@
+form {
+  display: flex;
+  border: 2px solid transparent;
+  border-radius: 1.5rem;
+  background-color: #454545;
+  padding: 0;
+  min-width: 21rem;
+  min-height: 2.5rem;
+}
+form input,
+form button {
+  font-size: 1.1rem;
+  margin: 0.25rem;
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 2rem;
+  background-color: transparent;
+}
+form input::placeholder {
+  color: #aaa;
+}
+form input[type="text"] {
+  margin: 0.25rem 0.5rem 0.25rem 1rem;
+}
+form input[type="submit"]:hover,
+form button:hover {
+  border: 2px solid var(--btn-border-color-hover);
+}
+form input[type="submit"]:active,
+form button:active {
+  background-color: var(--btn-bg-color-active);
+}
+
+@media (prefers-color-scheme: light) {
+  form {
+    background-color: #fff;
+  }
+  form input::placeholder {
+    color: #777;
+  }
+  form input[type="submit"]:active,
+  form button:active {
+    background-color: var(--btn-bg-color-active-light);
+  }
+}
