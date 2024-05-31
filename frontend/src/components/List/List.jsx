@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import "./List.css";
 
-const List = ({ notes, getNotes }) => {
+const List = ({ notes, getNotes, deleteNote }) => {
   const [note, setNote] = useState([]);
+  const [edit, setEdit] = useState(null);
+
+  const handleChange = () => {};
+
+  const handleDelete = (id) => {
+    const confirmation = confirm(`confirm deletion note id: ${id}?`);
+    if (confirmation) deleteNote(id);
+  };
 
   useEffect(() => {
     setNote(notes);
@@ -13,15 +21,26 @@ const List = ({ notes, getNotes }) => {
       <section className="cards">
         {note ? (
           note.map((note) => (
-            <figure key={note.id} className={"card " + note.category}>
-              <div className="card-note-category">🎨</div>
-              <div className="card-note-isCompleted">📁</div>
-              <div className="card-data">
-                <h3>{note.title}</h3>
-                <p>{note.description}</p>
-              </div>
-
-              <button className="card-delete-btn">❌</button>
+            <figure key={note.id} className={"card " + note.category} onClick={() => setEdit(note)}>
+              {edit?.id === note.id ? (
+                <>
+                  <form>
+                    <input type="text" name="title" value={note.title} onChange={handleChange} />
+                  </form>
+                </>
+              ) : (
+                <>
+                  <div className="card-note-category">🎨</div>
+                  <div className="card-note-isCompleted">📁</div>
+                  <div className="card-data">
+                    <h3>{note.title}</h3>
+                    <p>{note.description}</p>
+                  </div>
+                  <button className="card-delete-btn" onClick={() => handleDelete(note.id)}>
+                    🗑
+                  </button>
+                </>
+              )}
             </figure>
           ))
         ) : (

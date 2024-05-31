@@ -13,7 +13,7 @@
   border-radius: 1rem;
   background-color: #333;
   padding: 1.25rem 0.25rem 0.5rem 0.75rem;
-  margin: 1rem;
+  margin: 0.75rem;
 }
 .card:hover,
 .card:active {
@@ -133,9 +133,9 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .card {
+  /* .card {
     background-color: #cccccc90;
-  }
+  } */
   .card-note-isCompleted:active,
   .card-note-category:active,
   .card-delete-btn:active {

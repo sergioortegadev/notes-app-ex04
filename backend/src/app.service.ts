@@ -2,9 +2,6 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Server ON';
-  }
   getHealthcheck() {
     return `<html><head><meta name="color-scheme" content="light dark">
     <style>body{font-size: 7px}</style></head><body><br/><br/><pre style="word-wrap: break-word; white-space: pre-wrap;">

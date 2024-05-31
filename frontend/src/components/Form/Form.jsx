@@ -27,7 +27,7 @@ const Form = (searchNote) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="f-form">
         <input type="submit" value="🔍" />
         <input type="text" placeholder="Search notes" value={search} onChange={handleChange} ref={inputRef} autoFocus />
         {search && <button onClick={refresh}>✖</button>}
