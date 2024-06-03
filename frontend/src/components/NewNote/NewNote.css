@@ -47,6 +47,9 @@
   background-color: transparent;
   resize: none;
 }
+.nn-form option {
+  background-color: var(--btn-bg-color-active);
+}
 .nn-form input[type="text"],
 .nn-form textarea {
   width: 13rem;
@@ -66,7 +69,11 @@
   width: 6rem;
   height: 2rem;
 }
+.nn-form select:hover,
+.nn-form select:focus,
 .nn-form-btn input[type="submit"]:hover,
+.nn-form-btn input[type="submit"]:focus,
+.nn-form-btn button:focus,
 .nn-form-btn button:hover {
   border: 2px solid var(--btn-border-color-hover);
 }
@@ -84,6 +91,9 @@
   }
   .nn-form-btn input[type="submit"]:active,
   .nn-form-btn button:active {
+    background-color: var(--btn-bg-color-active-light);
+  }
+  .nn-form option {
     background-color: var(--btn-bg-color-active-light);
   }
 }

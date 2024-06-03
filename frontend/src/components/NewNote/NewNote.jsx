@@ -10,6 +10,18 @@ const NewNote = ({ setShowNew, postNote }) => {
   };
   const [newNote, setNewNote] = useState(initNote);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setShowNew(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setShowNew]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewNote({
@@ -64,7 +76,7 @@ const NewNote = ({ setShowNew, postNote }) => {
           <option value="black">⬛</option>
         </select>
         <div className="nn-form-btn">
-          <input type="submit" value="SAVE" />
+          <button>SAVE</button>
           <button onClick={cancel}>CANCEL</button>
         </div>
       </form>
