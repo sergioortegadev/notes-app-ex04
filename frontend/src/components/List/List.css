@@ -16,15 +16,17 @@
   margin: 0.75rem;
 }
 .card:hover,
-.card:active {
+.card:active,
+.card:focus {
   border-color: #777;
 }
-.card img {
+/* .card img {
   width: 180px;
   height: 180px;
   object-fit: cover;
-}
-.card-data {
+} */
+.card-data,
+.pn-form {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -32,22 +34,56 @@
   position: relative;
   top: -5rem;
 }
-.card-data h3 {
+.pn-form {
+  width: 100%;
+  height: 100%;
+}
+.card-data h3,
+.pn-form textarea[name="title"] {
   text-align: start;
   font-weight: bold;
-  width: 14rem;
+  width: 13.5rem;
   height: 4rem;
   overflow: hidden;
 }
-.card-data p {
+.pn-form textarea {
+  font-size: 1.05rem;
+  font-family: inherit;
+}
+.pn-form textarea[name="title"] {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+.pn-form textarea[name="title"],
+.pn-form textarea {
+  margin: 0.25rem;
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  background-color: #30303060;
+  resize: none;
+  padding: 0.25rem;
+}
+.card-data p,
+.pn-form textarea {
   height: 18rem;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   margin: 0;
 }
+.pn-form textarea {
+  scrollbar-color: #33333399 #50505050;
+}
+.pn-form-btn {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
 .card-note-isCompleted,
-.card-note-category {
+.card-note-category,
+.card-ArcNote-isCompleted {
   position: relative;
   width: 2rem;
   height: 2rem;
@@ -67,6 +103,10 @@
   top: -0.8rem;
   right: -5.8rem;
 }
+.card-ArcNote-isCompleted {
+  top: -0.75rem;
+  right: -8.5rem;
+}
 .card-note-isCompleted:hover,
 .card-note-category:hover {
   border-color: var(--btn-border-color-hover);
@@ -74,6 +114,31 @@
 .card-note-isCompleted:active,
 .card-note-category:active {
   background-color: var(--btn-bg-color-active);
+}
+.card-note-category-hovertext,
+.card-note-isCompleted-hovertext,
+.card-ArcNote-isCompleted-hovertext {
+  display: none;
+  z-index: 15;
+  position: absolute;
+  top: 2rem;
+  left: -0.4rem;
+  font-size: 0.7rem;
+  color: #000;
+  background-color: #80808070;
+  width: fit-content;
+}
+.card-note-category:hover .card-note-category-hovertext,
+.card-note-isCompleted:hover .card-note-isCompleted-hovertext,
+.card-ArcNote-isCompleted:hover .card-ArcNote-isCompleted-hovertext {
+  display: block;
+}
+
+.card-note-isCompleted img,
+.card-ArcNote-isCompleted img {
+  position: relative;
+  top: 2px;
+  width: 1.5rem;
 }
 .card-delete-btn {
   position: relative;
@@ -90,6 +155,15 @@
 .card-delete-btn:active {
   background-color: var(--btn-bg-color-active);
 }
+.card-ArcNote-delete-btn {
+  justify-self: end;
+}
+
+.card-ArcNote-data {
+  height: 100%;
+  position: relative;
+  top: -3rem;
+}
 
 .no-notes {
   display: flex;
@@ -104,6 +178,19 @@
 .no-notes img {
   width: 300px;
 }
+
+select {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  top: -2px;
+  left: -3px;
+  outline: none;
+}
+option {
+  background-color: var(--btn-bg-color-active);
+}
+
 /*  - - Category colors - -  */
 .red {
   background-color: var(--card-bg-color-red);
@@ -140,5 +227,17 @@
   .card-note-category:active,
   .card-delete-btn:active {
     background-color: var(--btn-bg-color-active-light);
+  }
+  .pn-form textarea[name="title"],
+  .pn-form textarea,
+  .pn-form button {
+    background-color: #90909055;
+  }
+
+  option {
+    background-color: var(--btn-bg-color-active-light);
+  }
+  .pn-form textarea {
+    color: var(--card-color-black);
   }
 }

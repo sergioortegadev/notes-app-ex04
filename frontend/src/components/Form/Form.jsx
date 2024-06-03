@@ -1,14 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./Form.css";
 
-const Form = (searchNote) => {
+const Form = ({ searchNote, getNotes }) => {
   const [search, setSearch] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (search === "") return;
-    setSearch("");
-    searchNote.search(search);
+    searchNote(search);
   };
 
   const handleChange = (e) => {
@@ -24,6 +23,24 @@ const Form = (searchNote) => {
     setSearch("");
     focusInput();
   };
+
+  useEffect(() => {
+    const handlekeyDown = (e) => {
+      if (e.key === "Escape") {
+        getNotes();
+      }
+    };
+    window.addEventListener("keydown", handlekeyDown);
+    return () => {
+      window.removeEventListener("keydown", handlekeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (search.length > 2) {
+      searchNote(search);
+    }
+  }, [search]);
 
   return (
     <>
