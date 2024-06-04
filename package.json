@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Notes app with nest.js framework",
-  "main": "./backend/src/main.tx",
+  "main": "./backend/dist/main",
   "scripts": {
+    "start:prod": "node backend/dist/main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sergio Ortega",

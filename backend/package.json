@@ -5,7 +5,7 @@
   "author": "Sergio Ortega dev",
   "private": true,
   "license": "UNLICENSED",
-  "type": "commonjs",
+  "type": "es2020",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
