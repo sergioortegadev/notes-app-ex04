@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 5000
-CMD [ "node", "backend/dist/main.js" ]
+CMD [ "node", "dist/main.js" ]
