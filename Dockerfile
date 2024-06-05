@@ -1,7 +1,15 @@
+# Etapa 1: Construcción del frontend
+FROM node:20 AS build-frontend
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm install
+COPY frontend/ .
+RUN npm run build
+
+# Etapa 2: Construcción del backend y combinación con el frontend
 FROM node:20
-WORKDIR /app
-COPY backend/package*.json ./backend/
 WORKDIR /app/backend
+COPY backend/package*.json ./
 RUN npm install
 COPY backend/ .
 RUN npm run build
