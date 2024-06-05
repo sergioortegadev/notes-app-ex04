@@ -1,7 +1,9 @@
 FROM node:20
-WORKDIR /backend
-COPY package*.json ./
+WORKDIR /app
+COPY backend/package*.json ./backend/
+WORKDIR /app/backend
 RUN npm install
-COPY . .
+COPY backend/ .
+RUN npm run build
 EXPOSE 5000
-CMD [ "node", "dist/main.js" ]
+CMD ["node", "dist/main.js"]
