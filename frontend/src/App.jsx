@@ -9,7 +9,7 @@ function App() {
   const [archivedNotes, setArchivedNotes] = useState([]);
   const [showNew, setShowNew] = useState(false);
 
-  const endpoint = "http://localhost:5000/v1/notes";
+  const endpoint = "https://notes-app-ex04.onrender.com/v1/notes";
 
   const getNotes = async () => {
     const data = await fetch(endpoint).then((res) => res.json());
